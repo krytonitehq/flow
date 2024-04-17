@@ -6,7 +6,7 @@ import queuesRoute from '@flow/modules/queues/queues.route';
 
 async function routes(route: FastifyInstance) {
     route.get('/healthcheck', (_, reply: FastifyReply) => {
-        // TODO: respond with 200
+        return reply.status(200).send("API is at your service! (Up)")
     });
 
     route.register(jobsRoute, {
