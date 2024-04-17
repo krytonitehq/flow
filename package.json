@@ -9,11 +9,14 @@
         "format": "prettier -c --write src/**"
     },
     "dependencies": {
+        "amqplib": "^0.10.4",
+        "dotenv": "^16.4.5",
         "fastify": "^4.26.2",
         "pino": "^8.20.0"
     },
     "devDependencies": {
         "@types/node": "^20.12.7",
+        "@types/amqplib": "^0.10.5",
         "pino-pretty": "^11.0.0",
         "prettier": "^3.2.5",
         "tsx": "^4.7.2",
