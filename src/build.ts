@@ -1,18 +1,22 @@
 import Fastify, { FastifyInstance } from 'fastify';
+import { serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod';
 
 import { loggerConfig } from '@flow/utils/logger';
 import { randId } from '@flow/utils/randId';
 
-import routes from '@flow/modules/routes';
+import routes from '@flow/modules/api/routes';
 
 const buildServer = () => {
     const app: FastifyInstance = Fastify({
         trustProxy: true,
         logger: loggerConfig,
         genReqId() {
-            return randId('req', 32);
+            return randId('req', 16);
         },
     });
+
+    app.setValidatorCompiler(validatorCompiler);
+    app.setSerializerCompiler(serializerCompiler);
 
     app.setNotFoundHandler(function (request, reply) {
         return reply.code(404).send({
